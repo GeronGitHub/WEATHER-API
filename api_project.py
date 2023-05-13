@@ -49,3 +49,30 @@ def getDistanceBetweenTwoCities(cityOne, cityTwo):
     λ2 = city2long * math.pi / 180
         
     return "The distance between " + getData(cityOne)['name'] + " and " + getData(cityTwo)['name'] + " is " + str(round(haversineFormula(φ1, φ2, λ1, λ2), 2)) + "km."
+
+def runApp():
+    
+    choice = int(input("What would you like to know? \n\
+    1. Temperature of a city\n\
+    2. Distance between two cities\n\
+    3. Weather condition of a city\n\
+    4. Complete data of a city\n"))
+    
+    if choice == 1:
+        citychosen = input("What city would you like to know the temperature of? ")
+        print(getTemperature(citychosen))
+    elif choice == 2:
+        cityone, citytwo = input("Enter two cities: (type in this format -> city1, city2) ").split(",")
+        print(getDistanceBetweenTwoCities(cityone, citytwo))
+    elif choice == 3:
+        citychosen = input("What city would you like to know the weather condition of? ")
+        print(getCondition(citychosen))
+    elif choice == 4:
+        citychosen = input("What city would you like the complete data of? ")
+        print(getData(citychosen))
+    
+    else:
+        print("Please pick a number between 1 and 4!")
+        runApp()
+    
+    return
